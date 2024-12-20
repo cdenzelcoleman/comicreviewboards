@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 // GET /comics/new (new functionality) PROTECTED - only signed in users can access
 router.get('/new', ensureSignedIn, (req, res) => {
-  res.send('Add a unicorn!');
+  res.send('Add a comic!');
 });
 
 

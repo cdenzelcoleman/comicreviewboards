@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const session = require('express-session');
 
 const app = express();
-
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT || "3000";
 
@@ -52,7 +51,7 @@ app.get('/', (req, res) => {
 // defined in the router module
 app.use('/auth', require('./controllers/auth'));
 
-app.use('/unicorns', require('./controllers/unicorns'));
+app.use('/comics', require('./controllers/comics'));
 
 // Any requests that get this far must have a signed in 
 // user thanks to ensureSignedIn middleware
