@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Comic = require('../models/comic');
 
 // Middleware 
 const ensureSignedIn = require('../middleware/ensure-signed-in');
@@ -36,6 +37,16 @@ try {
   console.error(err);
   res.redirect('/comics/new');
 }
+});
+// show comic details
+router.get('/:id', async (req, res) => {
+  try {
+    const comic = await Comic.findById(req.params.id).populate('owner comments.author');
+    res.render('comic/show.ejs', { comic, user: req.user});
+  } catch (err) {
+    console.error(err);
+    res.redirect('/comics');
+  }
 });
 
 
