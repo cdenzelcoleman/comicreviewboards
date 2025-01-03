@@ -48,6 +48,33 @@ router.get('/:id', async (req, res) => {
     res.redirect('/comics');
   }
 });
+// comic edit
+router.get('/:id/edit', ensureSignedIn, async (req, res) => {
+  try {
+    const comic = await Comic.findById(req.params.id);
+    if (!comic.owner.equals(req.user._id))
+      return res.redirect('/comics');
+    res.render('comic/edit.ejs', { comic, user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.redirect('/comics');
+    
+  }
+});
+// update comic
+router.put('/id', ensureSignedIn, async (req,res) => {
+  try{
+    const comic = await Comic.findById(req.params.id);
+    if(!comic.owner.equals(req.user._id)) return res.redirect('comics');
+    Object.assign(comic, req.body);
+    await comic.save();
+    res.redirect('comics/${comic._id');
+  } catch (err) {
+    console.error(err);
+    res.redirect('/comics');
+  }
+});
+
 
 
 
