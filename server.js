@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const session = require('express-session');
+const comicsController = require('./controllers/comics');
 
 const app = express();
 // Set the port from environment variable or default to 3000
@@ -58,6 +59,8 @@ app.use('/comics', require('./controllers/comics'));
 app.use(require('./middleware/ensure-signed-in'));
 // Any controller/routes mounted below here will have
 // ALL routes protected by the ensureSignedIn middleware
+app.use('/comics', comicsController);
+
 
 
 

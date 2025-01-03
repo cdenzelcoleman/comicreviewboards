@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your App's Title</title>
+    <title>Comic Review Boards</title>
     <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
@@ -13,7 +13,7 @@
         <a href="/comics">ALL COMICS</a>
         <!-- Above renders whether signed in or not -->
         <% if (user) { %>
-        <a href="/comics/new">ADD UNICORN</a>
+        <a href="/comics/new">ADD COMICS</a>
         <a href="/auth/sign-out">SIGN OUT</a>
         <span><%= user.username %></span>
         <% } else { %>

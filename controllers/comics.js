@@ -10,8 +10,8 @@ const ensureSignedIn = require('../middleware/ensure-signed-in');
 // GET /comics (index functionality) UN-PROTECTED - all users can access
 router.get('/', async (req, res) => {
   try{
-    const comics = await comic.find().populate('owner').exec();
-    res.render('comics/index.ejs', { comics, user: req.user});
+    const comics = await Comic.find().populate('owner').exec();
+    res.render('comics/index.ejs', { comics, user: req.user, title: ''});
   } catch (err) {
     console.error(err);
     res.redirect('/');
@@ -20,13 +20,13 @@ router.get('/', async (req, res) => {
 
 // GET /comics/new (new functionality) PROTECTED - only signed in users can access
 router.get('/new', ensureSignedIn, (req, res) => {
-  res.render('comics/new.ejs', {user: req.user});
+  res.render('comics/new.ejs', { user: req.user, title: '' });
 });
 
 // add new comic
 router.post('/', ensureSignedIn, async (req, res) => {
 try {
-  const newComic = await comic.create ({
+  const newComic = await Comic.create ({
     ...req.body,
     owner: req.user._id,
   });
@@ -42,7 +42,7 @@ try {
 router.get('/:id', async (req, res) => {
   try {
     const comic = await Comic.findById(req.params.id).populate('owner comments.author');
-    res.render('comic/show.ejs', { comic, user: req.user});
+    res.render('comic/show.ejs', { comic, user: req.user, title: ''});
   } catch (err) {
     console.error(err);
     res.redirect('/comics');
@@ -54,7 +54,7 @@ router.get('/:id/edit', ensureSignedIn, async (req, res) => {
     const comic = await Comic.findById(req.params.id);
     if (!comic.owner.equals(req.user._id))
       return res.redirect('/comics');
-    res.render('comic/edit.ejs', { comic, user: req.user });
+    res.render('comic/edit.ejs', { comic, user: req.user, title: ''});
   } catch (err) {
     console.error(err);
     res.redirect('/comics');
@@ -62,7 +62,7 @@ router.get('/:id/edit', ensureSignedIn, async (req, res) => {
   }
 });
 // update comic
-router.put('/id', ensureSignedIn, async (req,res) => {
+router.put('/:id', ensureSignedIn, async (req,res) => {
   try{
     const comic = await Comic.findById(req.params.id);
     if(!comic.owner.equals(req.user._id)) return res.redirect('comics');
@@ -74,7 +74,18 @@ router.put('/id', ensureSignedIn, async (req,res) => {
     res.redirect('/comics');
   }
 });
-
+//delete
+router.delete('/:id', ensureSignedIn, async (req, res) => {
+  try {
+    const comic = await Comic.findById(req.params.id);
+    if(!comic.owner.equals(req.user._id)) return res.redirect('comics');
+    await comic.deleteOne();
+    res.redirect('/comics');
+  } catch (err) {
+    console.error(err);
+    res.redirect('/comics');
+  }
+})
 
 
 
