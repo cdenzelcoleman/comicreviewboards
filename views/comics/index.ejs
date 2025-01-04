@@ -3,14 +3,15 @@
 <ul>
     <% comics.forEach((comic) => { %>
     <li>
-<a href="/comics/<% comic._id %>"><%= comic.title %></a> - <%= comic.category %>
+<a href="/comics/<%= comic._id %>"><%= comic.title %></a> - <%= comic.category %>
 <% if (user && comic.owner.equals(user._id)) { %>
-<a href="/comics/<%= comics._id %>/edit">Edit</a>
+<a href="/comics/<%= comic._id %>/edit">Edit</a>
 <form action="/comics/<%= comic._id %>?_method=DELETE" method="POST" style="display:inline;">
-    <button type="'submit">Delete</button>
+    <button type="submit">Delete</button>
     </form>
    <% } %>
     </li>
    <% }); %>
 </ul>
-</%- include('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>
+

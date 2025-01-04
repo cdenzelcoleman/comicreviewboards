@@ -1,3 +1,19 @@
 <%- include('../partials/header.ejs') %>
-<!-- Content -->
+<h1><%= comic.title %></h1>
+<p><strong>Description:</strong> <%= comic.description %></p>
+<p><strong>Category:</strong> <%= comic.category %></p>
+<p><strong>Rating</strong> <%= comic.rating %>/5</p>
+<p><strong>Posted by: </strong> <%= comic.owner.username %></p>
+
+<a href="/comics">Back to Comics</a>
+
+<%= if (user && user._id.equals(comic.owner._id)) { %>
+<a href="/comics/<%= comic.id %>/edit">Edit</a>
+<form action="/comics/<%= comic.id %>?_method=DELETE" method="POST" style = "display:inline;">
+    <button type="submit">Delete</button>
+  </form>
+<% } %>
+</form>
+}
+
 <%- include('../partials/footer.ejs') %>

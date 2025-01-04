@@ -42,7 +42,7 @@ try {
 router.get('/:id', async (req, res) => {
   try {
     const comic = await Comic.findById(req.params.id).populate('owner comments.author');
-    res.render('comic/show.ejs', { comic, user: req.user, title: ''});
+    res.render('comics/show.ejs', { comic, user: req.user, title: ''});
   } catch (err) {
     console.error(err);
     res.redirect('/comics');
