@@ -634,33 +634,31 @@ button {
 }
 
 .comic-item {
-  max-width: 50%;
-  position:relative;
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
-}
+    position: relative;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
 
-.comic-image {
-  max-width: 30%;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-}
+  .comic-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
 
 .comic-content {
   margin-bottom: 2rem;
 }
 
 .action-buttons {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
   display: flex;
   gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  position: static;
 }
