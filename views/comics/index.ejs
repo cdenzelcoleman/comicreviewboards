@@ -5,6 +5,9 @@
   <% if (comics.length > 0) { %>
     <% comics.forEach((comic) => { %>
       <li class="comic-item">
+        <% if (comic.image) { %>
+          <img src="<%= comic.image %>" alt="<%= comic.title %>" class="comic-image">
+        <% } %>
         <div class="comic-content">
           <a href="/comics/<%= comic._id %>" class="comic-title"><%= comic.title %></a>
           <p><strong>Categories:</strong> <%= comic.categories?.join(', ') || 'No categories provided.' %></p>
