@@ -1,3 +1,37 @@
 <%- include('../partials/header.ejs') %>
-<!-- Content -->
+<h1>Edit Comic</h1>
+
+<form action="/comics/<%= comic._id %>?_method=PUT" method="POST">
+  <label for="title">Title</label>
+  <input type="text" id="title" name="title" value="<%= comic.title %>" required />
+
+  <label for="description">Description</label>
+  <textarea id="description" name="description" required><%= comic.description %></textarea>
+
+  <label for="categories">Category</label>
+  <select id="categories" name="categories" required>
+    <% ['Fantasy', 'Sci-Fi', 'Horror', 'Adventure', 'Drama', 'Manga', 'Comedy'].forEach((category) => { %>
+        <option value="<%= category %>" <%= comic.categories.includes(category) ? 'selected' : '' %>>
+          <%= category %>
+        </option>
+      <% }); %>
+    </select>
+    
+  <label for="rating">Rating</label>
+  <input type="number" id="rating" name="rating" min="1" max="5" value="<%= comic.rating %>" required />
+
+  <label for="format">Format</label>
+  <select id="format" name="format" required>
+    <% ['Trade Paperback', 'Graphic Novel', 'Comicbook'].forEach(format => { %>
+      <option value="<%= format %>" <%= format === comic.format ? 'selected' : '' %>><%= format %></option>
+    <% }); %>
+  </select>
+
+  <label for="image">Image URL</label>
+  <input type="url" id="image" name="image" value="<%= comic.image %>" />
+
+  <button type="submit">Save Changes</button>
+</form>
+
+<a href="/comics/<%= comic._id %>">Cancel</a>
 <%- include('../partials/footer.ejs') %>

@@ -25,19 +25,26 @@ router.get('/new', ensureSignedIn, (req, res) => {
 
 // add new comic
 router.post('/', ensureSignedIn, async (req, res) => {
-try {
-  const newComic = await Comic.create ({
-    ...req.body,
-    owner: req.user._id,
-  });
-  req.user.comic.push(newComic._id);
-  await req.user.save();
-  res.redirect('/comics');
-} catch (err) {
-  console.error(err);
-  res.redirect('/comics/new');
-}
+  try {
+    const { categories, ...comicData } = req.body;
+
+    const categoryArray = Array.isArray(categories) ? categories : [categories];
+
+    const newComic = await Comic.create({
+      ...comicData,
+      categories: categoryArray,
+      owner: req.user._id,
+    });
+
+    req.user.comic.push(newComic._id);
+    await req.user.save();
+    res.redirect('/comics');
+  } catch (err) {
+    console.error(err);
+    res.redirect('/comics/new');
+  }
 });
+
 // show comic details
 router.get('/:id', async (req, res) => {
   try {
@@ -54,7 +61,7 @@ router.get('/:id/edit', ensureSignedIn, async (req, res) => {
     const comic = await Comic.findById(req.params.id);
     if (!comic.owner.equals(req.user._id))
       return res.redirect('/comics');
-    res.render('comic/edit.ejs', { comic, user: req.user, title: ''});
+    res.render('comics/edit.ejs', { comic, user: req.user, title: ''});
   } catch (err) {
     console.error(err);
     res.redirect('/comics');
@@ -68,7 +75,7 @@ router.put('/:id', ensureSignedIn, async (req,res) => {
     if(!comic.owner.equals(req.user._id)) return res.redirect('comics');
     Object.assign(comic, req.body);
     await comic.save();
-    res.redirect('comics/${comic._id');
+    res.redirect(`/comics/${comic._id}`); 
   } catch (err) {
     console.error(err);
     res.redirect('/comics');
@@ -87,6 +94,17 @@ router.delete('/:id', ensureSignedIn, async (req, res) => {
   }
 })
 
-
+router.post('/:id/comments', ensureSignedIn, async (req, res) => {
+  try {
+    const comic = await Comic.findById(req.params.id);
+    if (!comic) return res.redirect('/comics');
+    comic.comments.push ({ text: req.body.text, author:req.user._id });
+    await comic.save();
+    res.redirect(`/comics/${comic._id}`);
+  } catch (err) {
+    console.error(err);
+    res.redirect('/comics');
+  }
+});
 
 module.exports = router;
