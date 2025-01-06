@@ -14,7 +14,6 @@ router.post('/sign-up', async (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, 6);
     const user = await User.create(req.body);
     req.session.user_id = user._id;
-    // Update path to the functionality YOU want
     res.redirect('/');
   } catch (e) {
     console.log(e);

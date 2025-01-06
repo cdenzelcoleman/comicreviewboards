@@ -1,10 +1,8 @@
-/* Universal Styling */
 * {
   box-sizing: border-box;
   font-family: 'Arial', sans-serif;
 }
 
-/* Body Styling */
 body {
   margin: 0;
   display: flex;
@@ -13,7 +11,6 @@ body {
   background-color: #f9f9f9;
 }
 
-/* Navigation Bar */
 nav {
   background-color: #444;
   color: #fff;
@@ -43,7 +40,6 @@ nav span {
   color: #f1c40f;
 }
 
-/* Main Content Styling */
 main {
   flex: 1;
   padding: 2rem;
@@ -55,7 +51,6 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Forms Styling */
 form {
   width: 100%;
   max-width: 600px;
@@ -96,7 +91,6 @@ form button:focus {
   outline-offset: 2px;
 }
 
-/* Comic List Styling */
 ul {
   list-style-type: none;
   padding: 0;
@@ -148,7 +142,6 @@ li .actions {
   color: #444;
 }
 
-/* Footer Styling */
 footer {
   background-color: #444;
   color: #fff;
@@ -157,7 +150,6 @@ footer {
   margin-top: auto;
 }
 
-/* Delete styling */
 /* From Uiverse.io by andrew-demchenk0 */ 
 .button {
   --main-focus: #2d8cf0;
