@@ -25,7 +25,8 @@
   
 
 <% if (user && user._id.equals(comic.owner._id)) { %>
-<a href="/comics/<%= comic._id %>/edit">Edit</a>
+  <div class="action-buttons">
+  <%- include('../partials/editButton', { href: `/comics/${comic._id}/edit` }) %>
 <form action="/comics/<%= comic._id %>?_method=DELETE" method="POST" style="display:inline;">
   <button type="submit" class="button">
     <span class="button__text">Delete</span>
@@ -55,6 +56,7 @@
     </span>
   </button>
 </form>
+</div>
 <% } %>
 
 <h2>Comments</h2>
