@@ -51,6 +51,15 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.container {
+  max-width: 1200px; /* Set a max width for the app */
+  margin: 5em; /* Center the app horizontally */
+  margin-top: 0cap;
+  margin-bottom: 0cap;
+  padding-bottom:0cap; /* Add space on all sides */
+  min-width: 500px;
+}
+
 form {
   width: 100%;
   max-width: 600px;
