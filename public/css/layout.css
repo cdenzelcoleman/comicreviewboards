@@ -4,24 +4,31 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
+    justify-content: center;
+    background-color: var(--color-5);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .container {
     max-width: 1200px; 
-    margin: 5em; 
-    margin-top: 0cap;
-    margin-bottom: 0cap;
-    padding-bottom:0cap; 
+    margin: 5em auto; 
+    padding: 2em; 
     min-width: 500px;
   }
   
   footer {
-    background-color: #444;
-    color: #fff;
+    background-color: var(--color-2);
+    color: var(--color-5);
     text-align: center;
     padding: 1rem;
     margin-top: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      margin: 2em;
+      padding: 1em;
+      min-width: 100%;
+    }
   }
