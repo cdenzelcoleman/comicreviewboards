@@ -1,0 +1,27 @@
+main {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container {
+    max-width: 1200px; 
+    margin: 5em; 
+    margin-top: 0cap;
+    margin-bottom: 0cap;
+    padding-bottom:0cap; 
+    min-width: 500px;
+  }
+  
+  footer {
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+  }
