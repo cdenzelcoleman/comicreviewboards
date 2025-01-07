@@ -1,3 +1,14 @@
+:root {
+    --color-1: #fb9775;
+    --color-2: #302344;
+    --color-3: #62a0de;
+    --color-4: #b63e65;
+    --color-5: #cdd9f1;
+    --color-6: #eec9a0;
+    --color-7: #5a243b;
+    --color-8: #8d5f90;
+  }
+
 .comic-item {
     position: relative;
     padding: 1rem;
