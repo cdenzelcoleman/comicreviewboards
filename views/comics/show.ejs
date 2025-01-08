@@ -1,87 +1,64 @@
-<div class="flex-container">
+<div class="container">
   <%- include('../partials/header.ejs') %>
-  </div>
-    <main>
-<div class="comic-item">
-  <img src="<%= comic.image %>" alt="<%= comic.title %>" class="comic-image">
-  <div class="comic-content">
   
-<h1><%= comic.title %></h1>
-<p><strong>Description:</strong> <%= comic.description %></p>
-<p><strong>Categories:</strong> <%= comic.categories && comic.categories.length > 0 ? comic.categories.join(', ') : 'No categories provided.' %></p>
-<p><strong>Rating</strong> <%= comic.rating %>/5</p>
-<p><strong>Posted by: </strong> <%= comic.owner.username %></p>
-  </div>
-<a href="/comics">
-<button>
-  <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024"><path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path></svg>
-  <span>Comics</span>
-</button>
-  </a>
-  
+  <main>
+    <div class="comic-item">
+      <img src="<%= comic.image %>" alt="<%= comic.title %>" class="comic-image">
+      <div class="comic-content">
+        <h1><%= comic.title %></h1>
+        <p><strong>Description:</strong> <%= comic.description %></p>
+        <p><strong>Categories:</strong> 
+          <%= comic.categories && comic.categories.length > 0 ? comic.categories.join(', ') : 'No categories provided.' %>
+        </p>
+        <p><strong>Rating:</strong> <%= comic.rating %>/5</p>
+        <p><strong>Posted by:</strong> <%= comic.owner.username %></p>
+      </div>
+      <a href="/comics" class="back-button">
+        <button>
+          <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
+            <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
+          </svg>
+          <span>Comics</span>
+        </button>
+      </a>
 
-<% if (user && user._id.equals(comic.owner._id)) { %>
-  <div class="action-buttons">
-  <%- include('../partials/editButton', { href: `/comics/${comic._id}/edit` }) %>
-<form action="/comics/<%= comic._id %>?_method=DELETE" method="POST" style="display:inline;">
-  <button type="submit" class="button">
-    <span class="button__text">Delete</span>
-    <span class="button__icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="512" viewBox="0 0 512 512" height="512" class="svg">
-        <path
-          style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-          d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320"
-        ></path>
-        <line y2="112" y1="112" x2="432" x1="80"
-          style="stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
-        ></line>
-        <path
-          style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-          d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40"
-        ></path>
-        <line y2="400" y1="176" x2="256" x1="256"
-          style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-        ></line>
-        <line y2="400" y1="176" x2="192" x1="184"
-          style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-        ></line>
-        <line y2="400" y1="176" x2="320" x1="328"
-          style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-        ></line>
-      </svg>
-    </span>
-  </button>
-</form>
-</div>
-<% } %>
-</div>
-</main>
-</div>
-<div class="comments">
-<h2>Comments</h2>
-<ul>
-  <% comic.comments.forEach((comment) => { %>
-    <li>
-      <strong><%= comment.author.username %>:</strong> <%= comment.text %>
-    </li>
-  <% }); %>
-</ul>
-
-<% if (user) { %>
-  <form action="/comics/<%= comic._id %>/comments" method="POST">
-    <div class="form">
-      <input class="input" placeholder="Write your comment..." name="text" required type="text">
-      <span class="input-border"></span>
+      <% if (user && user._id.equals(comic.owner._id)) { %>
+        <div class="action-buttons">
+          <%- include('../partials/editButton', { href: `/comics/${comic._id}/edit` }) %>
+          <form action="/comics/<%= comic._id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit" class="button">
+              <span class="button__text">Delete</span>
+            </button>
+          </form>
+        </div>
+      <% } %>
     </div>
-    
-<button class="ui-btn">Opinions</button>
 
-  </form>
-</div>
-<% } else { %>
-  <p><a href="/auth/sign-in" style="color: #5891ff; text-decoration: none;">Sign in</a> to post a comment.</p>
-<% } %>
+    <!-- Comments Section -->
+    <div class="comments">
+      <h2>Comments</h2>
+      <ul>
+        <% comic.comments.forEach((comment) => { %>
+          <li>
+            <strong><%= comment.author.username %>:</strong> <%= comment.text %>
+          </li>
+        <% }); %>
+      </ul>
 
+      <% if (user) { %>
+        <form action="/comics/<%= comic._id %>/comments" method="POST">
+          <div class="form">
+            <input class="input" placeholder="Write your comment..." name="text" required type="text">
+            <span class="input-border"></span>
+          </div>
+          <button class="ui-btn">Opinions</button>
+        </form>
+      <% } else { %>
+        <p><a href="/auth/sign-in" style="color: #5891ff; text-decoration: none;">Sign in</a> to post a comment.</p>
+      <% } %>
+    </div>
+  </main>
 
-
+    <%- include('../partials/footer.ejs') %>
+  
 </div>

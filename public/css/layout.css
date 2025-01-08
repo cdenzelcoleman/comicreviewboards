@@ -36,10 +36,21 @@
   .container {
     width: 100%;
     max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 1rem; 
+    margin: 200px auto; 
+    padding: 200px ; 
   }
-  
+
+  .sign-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+    min-height: 100vh;
+  }
   main {
     flex: 1;
     padding: 2rem;
@@ -53,13 +64,7 @@
     margin: 1rem auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  .container {
-    width: 100%;
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 1rem; 
-  }
-  
+    
   main {
     flex: 1;
     padding: 2rem;

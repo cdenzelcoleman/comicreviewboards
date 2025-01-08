@@ -1,5 +1,5 @@
 <%- include('../partials/header.ejs') %>
-
+<div class="sign-container">
 <form action="/auth/sign-up" method="POST">
   <label for="username">Username:</label>
   <input type="text" name="username" id="username" />
@@ -9,5 +9,6 @@
   <input type="password" name="confirmPassword" id="confirmPassword" />
   <button type="submit">SIGN UP</button>
 </form>
+</div>
 
 <%- include('../partials/footer.ejs')%>
