@@ -1,4 +1,4 @@
-# ![Comic Review Boards](https://imgur.com/a/lTAQHZF.png)
+# ![Comic Review Boards](https://i.imgur.com/LvIGBo7.png)
 
 Welcome to **Comic Review Boards**! Comic Review Board is a web app where users can browse, review, and manage a collection of comics. It leverages the Comic Vine API to seed an initial database of comics and provides features for registered users to add, edit, or delete their comic entries. Users can also comment on comics and view aggregated ratings.
 
@@ -48,11 +48,9 @@ To get started with the project, simply go to provided URL
 # Acknowledgements
 
 Acknowledgements
-
-Comic Vine API
-[Comic Vine API](https://comicvine.gamespot.com/api/)
-[Node.js](https://nodejs.org/en)
-[MongoDB](https://www.mongodb.com/lp/cloud/atlas/try4-reg?utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_core_retarget-brand_gic-null_amers-us-ca_ps-all_desktop_eng_lead&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=14291004479&adgroup=128837427347&cq_cmp=14291004479&gad_source=1&gbraid=0AAAAADQ1401EtX0_hZrwtA2BjuJIW-6Xl&gclid=Cj0KCQiA4fi7BhC5ARIsAEV1YibioBh_gpnHw-uFf5nJSfl96UtVripzG133AZmBU59oMeFRg7Ht6UEaAr5jEALw_wcB)
+- [Comic Vine API](https://comicvine.gamespot.com/api/)
+- [Node.js](https://nodejs.org/en)
+- [MongoDB](https://www.mongodb.com/lp/cloud/atlas/try4-reg?utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_core_retarget-brand_gic-null_amers-us-ca_ps-all_desktop_eng_lead&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=14291004479&adgroup=128837427347&cq_cmp=14291004479&gad_source=1&gbraid=0AAAAADQ1401EtX0_hZrwtA2BjuJIW-6Xl&gclid=Cj0KCQiA4fi7BhC5ARIsAEV1YibioBh_gpnHw-uFf5nJSfl96UtVripzG133AZmBU59oMeFRg7Ht6UEaAr5jEALw_wcB)
 
 
 
