@@ -26,7 +26,7 @@ async function seedDatabase() {
             rating: 1, 
             format: 'Digital', 
             image: comic.image?.original_url || '',
-            owner: 'DefaultOwnerIdHere', // Replace with a valid owner ID from your database
+            owner: 'camdcole@gmail.com', // Replace with a valid owner ID from your database
         }));
 
         await Comic.insertMany(comics);
