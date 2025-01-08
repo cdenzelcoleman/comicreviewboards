@@ -22,11 +22,11 @@ async function seedDatabase() {
         const comics = response.data.results.map(comic => ({
             title: comic.name || 'Untitled',
             description: comic.deck || 'No description available.',
-            categories: ['Action'], 
-            rating: 1, 
-            format: 'Digital', 
+            categories: ['Sci-Fi'], 
+            rating: 4, 
+            format: 'Graphic Novel', 
             image: comic.image?.original_url || '',
-            owner: 'camdcole@gmail.com', // Replace with a valid owner ID from your database
+            owner: 'camdcole@gmail.com', 
         }));
 
         await Comic.insertMany(comics);
