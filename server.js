@@ -55,6 +55,8 @@ app.use('/auth', require('./controllers/auth'));
 
 app.use('/comics', require('./controllers/comics'));
 
+app.use('comics', comicsController);
+
 // Any requests that get this far must have a signed in 
 // user thanks to ensureSignedIn middleware
 app.use(require('./middleware/ensure-signed-in'));
