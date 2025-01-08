@@ -51,3 +51,5 @@ res.json({
     });
 }
 });
+
+module.exports = router;
