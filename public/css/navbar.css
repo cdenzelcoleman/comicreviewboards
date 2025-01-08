@@ -10,6 +10,9 @@
 }
 
   nav {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
     background-color: var(--color-2);
     color: var(--color-5);
     display: flex;
@@ -19,7 +22,7 @@
     font-size: 1rem; 
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba (0, 0, 0, 0.2);
-    margin: 0.5rem;      
+    margin: 6em auto;      
       }
   
   nav a {
@@ -57,4 +60,13 @@
   nav a {
     margin: 0.5rem 0;
   }
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: calc(50% - 1rem);
+  /* Add any other flexbox properties you need */
 }

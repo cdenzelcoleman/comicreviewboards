@@ -20,15 +20,61 @@
   }
   
   body {
+    /* position: absolute; */
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #302344, #8d5f90);
-    color: var(--color-text);
+    padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('https://i.imgur.com/BQBainb.png');
+    background-size: cover; /* Ensures the image covers the full screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-attachment: fixed;
   }
+
+  .container {
+    width: 100%;
+    max-width: 1200px; /* Optional: set a max width */
+    margin: 0 auto; /* Centers content while removing extra gaps */
+    padding: 0 1rem; /* Adjust padding for breathing room */
+  }
+  
+  main {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Adds contrast for content */
+    border-radius: 8px;
+    max-width: 90%;
+    margin: 1rem auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .container {
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 1rem; 
+  }
+  
+  main {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    max-width: 90%;
+    margin: 1rem auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  
   
   .home-container {
     display: flex;
@@ -104,15 +150,6 @@
     transform: scale(1.1);
   }
   
-
-
-
-
-.container {
-    width: 90%; 
-    margin: 2em auto;  
-    }
-
 footer {
     background-color: var(--color-2);
     color: var(--color-5);
