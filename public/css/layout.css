@@ -7,20 +7,106 @@
     --color-6: #eec9a0;
     --color-7: #5a243b;
     --color-8: #8d5f90;
+
 }
 
-main {
-    flex: 1;
-    padding: 1rem;
+:root {
+    --color-primary: #8d5f90;
+    --color-secondary: #fb9775;
+    --color-bg: #302344;
+    --color-accent: #62a0de;
+    --color-text: #ffffff;
+    --navbar-height: 60px;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #302344, #8d5f90);
+    color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .home-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    height: 90%;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    background-color: var(--color-5);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* margin: 1rem auto; */
-}
+    align-items: center;
+  }
+  
+  .hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero .button {
+    background-color: var(--color-secondary);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .hero .button:hover {
+    background-color: var(--color-accent);
+  }
+  
+  .home-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: var(--navbar-height);
+    background-color: var(--color-bg);
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: auto;
+    margin-bottom: 40px; 
+    padding: 10px;
+  }
+  
+  .home-navbar a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .home-navbar a:hover {
+    color: var(--color-secondary);
+    transform: scale(1.1);
+  }
+  
+
+
+
 
 .container {
     width: 90%; 
