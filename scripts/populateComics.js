@@ -26,7 +26,7 @@ async function seedDatabase() {
             rating: 4, 
             format: 'Graphic Novel', 
             image: comic.image?.original_url || '',
-            owner: 'camdcole@gmail.com', 
+            owner: '677e2c14ea517593578c749e', 
         }));
 
         await Comic.insertMany(comics);
