@@ -21,12 +21,22 @@
   }
   
   .comic-image {
-    width: 400px; 
+    /* width: 400px; 
     height: 600px; 
     object-fit: cover;
     padding: 1em; 
     border-radius: 5px;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; */
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .comic-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
 

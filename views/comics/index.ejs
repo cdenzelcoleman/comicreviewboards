@@ -1,6 +1,9 @@
-<div class="container">
+<div class="flex-container">
   <%- include('../partials/header.ejs') %>
-  <main>
+  </div>
+  <div class="container">
+
+<main>
 <h1>All Comics</h1>
 
 <ul>
@@ -8,13 +11,16 @@
     <% comics.forEach((comic) => { %>
       <li class="comic-item">
         <% if (comic.image) { %>
-          <img src="<%= comic.image %>" alt="<%= comic.title %>" class="comic-image">
+          <a href="/comics/<%= comic._id %>">
+            <img src="<%= comic.image %>" alt="<%= comic.title %>" class="comic-image">
+          </a>
         <% } %>
+        
         <div class="comic-content">
           <a href="/comics/<%= comic._id %>" class="comic-title"><%= comic.title %></a>
-          <p><strong>Categories:</strong> <%= comic.categories?.join(', ') || 'No categories provided.' %></p>
+          <!-- <p><strong>Categories:</strong> <%= comic.categories?.join(', ') || 'No categories provided.' %></p>
           <p><strong>Description:</strong> <%= comic.description || 'No description provided.' %></p>
-          <p><strong>Rating:</strong> <%= comic.rating || 'Not rated yet.' %></p>
+          <p><strong>Rating:</strong> <%= comic.rating || 'Not rated yet.' %></p> -->
         </div>
 
         <% if (user && comic.owner.equals(user._id)) { %>

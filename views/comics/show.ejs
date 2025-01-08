@@ -1,8 +1,11 @@
-<div class="container">
+<div class="flex-container">
   <%- include('../partials/header.ejs') %>
+  </div>
+    <main>
 <div class="comic-item">
   <img src="<%= comic.image %>" alt="<%= comic.title %>" class="comic-image">
   <div class="comic-content">
+  
 <h1><%= comic.title %></h1>
 <p><strong>Description:</strong> <%= comic.description %></p>
 <p><strong>Categories:</strong> <%= comic.categories && comic.categories.length > 0 ? comic.categories.join(', ') : 'No categories provided.' %></p>
@@ -52,6 +55,9 @@
 </div>
 <% } %>
 </div>
+</main>
+</div>
+<div class="comments">
 <h2>Comments</h2>
 <ul>
   <% comic.comments.forEach((comment) => { %>
@@ -71,10 +77,11 @@
 <button class="ui-btn">Opinions</button>
 
   </form>
+</div>
 <% } else { %>
   <p><a href="/auth/sign-in" style="color: #5891ff; text-decoration: none;">Sign in</a> to post a comment.</p>
 <% } %>
 
-</main>
-<%- include('../partials/footer.ejs') %>
+
+
 </div>

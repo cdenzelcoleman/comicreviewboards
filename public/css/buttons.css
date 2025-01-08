@@ -184,6 +184,13 @@
     height: 38px;
     letter-spacing: 0px;
   }
+
+  .comments {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2em; 
+    margin-bottom: 2em; 
+  }
   
   /* From Uiverse.io by andrew-demchenk0 */ 
   .button {
