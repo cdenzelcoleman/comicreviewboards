@@ -29,7 +29,7 @@ router.get('comics', async (req,res) => {
     }
 });
 
-route.get('/comics/:id', async(req, res) => {
+router.get('/comics/:id', async(req, res) => {
     try{
         const comicId = req.params.id
 ;
