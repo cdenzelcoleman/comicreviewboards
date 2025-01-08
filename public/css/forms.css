@@ -87,7 +87,7 @@ form {
    }
    /* Hover on Input */
    input:hover {
-    background: var(--input-hovered-color);
+    background: none;
    }
    
    input:focus {
