@@ -1,6 +1,6 @@
 module.exports = function (req, res, next) {
   if (req.session.user_id) {
-     return next();
+    return next();
   }
-  res.redirect('/auth/sign-in');
+  res.redirect("/auth/sign-in");
 };

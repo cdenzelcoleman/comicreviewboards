@@ -1,40 +1,48 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Comic = require('../models/comic');
+const Comic = require("../models/comic");
 
-// Middleware 
-const ensureSignedIn = require('../middleware/ensure-signed-in');
+// Middleware
+const ensureSignedIn = require("../middleware/ensure-signed-in");
 
 // All routes start with '/comics'
 
 // GET /comics (index functionality) UN-PROTECTED - all users can access
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const comics = await Comic.find().sort({ createdAt: -1 }).populate('owner').exec();
-    res.render('comics/index.ejs', { comics, user: req.user, title: '' });
+    const comics = await Comic.find()
+      .sort({ createdAt: -1 })
+      .populate("owner")
+      .exec();
+    res.render("comics/index.ejs", { comics, user: req.user, title: "" });
   } catch (err) {
     console.error(err);
-    res.redirect('/');
+    res.redirect("/");
   }
 });
 
 // GET /comics/new (new functionality) PROTECTED - only signed in users can access
-router.get('/new', ensureSignedIn, (req, res) => {
-  res.render('comics/new.ejs', { user: req.user, title: '' });
+router.get("/new", ensureSignedIn, (req, res) => {
+  res.render("comics/new.ejs", { user: req.user, title: "" });
 });
 
 // add new comic
-router.post('/', ensureSignedIn, async (req, res) => {
+router.post("/", ensureSignedIn, async (req, res) => {
   try {
-    req.body.format = req.body.format?.trim() === 'Comic Book' ? 'Comicbook' : req.body.format;
+    req.body.format =
+      req.body.format?.trim() === "Comic Book" ? "Comicbook" : req.body.format;
 
-    if (!['Trade Paperback', 'Graphic Novel', 'Comicbook'].includes(req.body.format)) {
-      req.body.format = 'Comicbook'; 
+    if (
+      !["Trade Paperback", "Graphic Novel", "Comicbook"].includes(
+        req.body.format,
+      )
+    ) {
+      req.body.format = "Comicbook";
     }
 
     req.body.image = req.body.image?.match(/\.(jpg|jpeg|png|gif|svg)$/i)
       ? req.body.image
-      : 'https://i.imgur.com/OJnlOy8.jpeg';
+      : "https://i.imgur.com/OJnlOy8.jpeg";
 
     const { categories, ...comicData } = req.body;
     const categoryArray = Array.isArray(categories) ? categories : [categories];
@@ -51,72 +59,72 @@ router.post('/', ensureSignedIn, async (req, res) => {
 
     req.user.comic.push(newComic._id);
     await req.user.save();
-    res.redirect('/comics');
+    res.redirect("/comics");
   } catch (err) {
     console.error(err);
-    res.redirect('/comics/new');
+    res.redirect("/comics/new");
   }
 });
 
 // show comic details
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const comic = await Comic.findById(req.params.id).populate('owner comments.author');
-    res.render('comics/show.ejs', { comic, user: req.user, title: ''});
+    const comic = await Comic.findById(req.params.id).populate(
+      "owner comments.author",
+    );
+    res.render("comics/show.ejs", { comic, user: req.user, title: "" });
   } catch (err) {
     console.error(err);
-    res.redirect('/comics');
+    res.redirect("/comics");
   }
 });
 // comic edit
-router.get('/:id/edit', ensureSignedIn, async (req, res) => {
+router.get("/:id/edit", ensureSignedIn, async (req, res) => {
   try {
     const comic = await Comic.findById(req.params.id);
-    if (!comic.owner.equals(req.user._id))
-      return res.redirect('/comics');
-    res.render('comics/edit.ejs', { comic, user: req.user, title: ''});
+    if (!comic.owner.equals(req.user._id)) return res.redirect("/comics");
+    res.render("comics/edit.ejs", { comic, user: req.user, title: "" });
   } catch (err) {
     console.error(err);
-    res.redirect('/comics');
-    
+    res.redirect("/comics");
   }
 });
 // update comic
-router.put('/:id', ensureSignedIn, async (req,res) => {
-  try{
+router.put("/:id", ensureSignedIn, async (req, res) => {
+  try {
     const comic = await Comic.findById(req.params.id);
-    if(!comic.owner.equals(req.user._id)) return res.redirect('comics');
+    if (!comic.owner.equals(req.user._id)) return res.redirect("comics");
     Object.assign(comic, req.body);
-    await comic.save();
-    res.redirect(`/comics/${comic._id}`); 
-  } catch (err) {
-    console.error(err);
-    res.redirect('/comics');
-  }
-});
-//delete
-router.delete('/:id', ensureSignedIn, async (req, res) => {
-  try {
-    const comic = await Comic.findById(req.params.id);
-    if(!comic.owner.equals(req.user._id)) return res.redirect('comics');
-    await comic.deleteOne();
-    res.redirect('/comics');
-  } catch (err) {
-    console.error(err);
-    res.redirect('/comics');
-  }
-})
-
-router.post('/:id/comments', ensureSignedIn, async (req, res) => {
-  try {
-    const comic = await Comic.findById(req.params.id);
-    if (!comic) return res.redirect('/comics');
-    comic.comments.push ({ text: req.body.text, author:req.user._id });
     await comic.save();
     res.redirect(`/comics/${comic._id}`);
   } catch (err) {
     console.error(err);
-    res.redirect('/comics');
+    res.redirect("/comics");
+  }
+});
+//delete
+router.delete("/:id", ensureSignedIn, async (req, res) => {
+  try {
+    const comic = await Comic.findById(req.params.id);
+    if (!comic.owner.equals(req.user._id)) return res.redirect("comics");
+    await comic.deleteOne();
+    res.redirect("/comics");
+  } catch (err) {
+    console.error(err);
+    res.redirect("/comics");
+  }
+});
+
+router.post("/:id/comments", ensureSignedIn, async (req, res) => {
+  try {
+    const comic = await Comic.findById(req.params.id);
+    if (!comic) return res.redirect("/comics");
+    comic.comments.push({ text: req.body.text, author: req.user._id });
+    await comic.save();
+    res.redirect(`/comics/${comic._id}`);
+  } catch (err) {
+    console.error(err);
+    res.redirect("/comics");
   }
 });
 
