@@ -9,9 +9,9 @@ const ensureSignedIn = require('../middleware/ensure-signed-in');
 
 // GET /comics (index functionality) UN-PROTECTED - all users can access
 router.get('/', async (req, res) => {
-  try{
-    const comics = await Comic.find().populate('owner').exec();
-    res.render('comics/index.ejs', { comics, user: req.user, title: ''});
+  try {
+    const comics = await Comic.find().sort({ createdAt: -1 }).populate('owner').exec();
+    res.render('comics/index.ejs', { comics, user: req.user, title: '' });
   } catch (err) {
     console.error(err);
     res.redirect('/');
@@ -26,8 +26,17 @@ router.get('/new', ensureSignedIn, (req, res) => {
 // add new comic
 router.post('/', ensureSignedIn, async (req, res) => {
   try {
-    const { categories, ...comicData } = req.body;
+    req.body.format = req.body.format?.trim() === 'Comic Book' ? 'Comicbook' : req.body.format;
 
+    if (!['Trade Paperback', 'Graphic Novel', 'Comicbook'].includes(req.body.format)) {
+      req.body.format = 'Comicbook'; 
+    }
+
+    req.body.image = req.body.image?.match(/\.(jpg|jpeg|png|gif|svg)$/i)
+      ? req.body.image
+      : 'https://i.imgur.com/OJnlOy8.jpeg';
+
+    const { categories, ...comicData } = req.body;
     const categoryArray = Array.isArray(categories) ? categories : [categories];
 
     const newComic = await Comic.create({
@@ -35,6 +44,10 @@ router.post('/', ensureSignedIn, async (req, res) => {
       categories: categoryArray,
       owner: req.user._id,
     });
+
+    if (!req.user.comic) {
+      req.user.comic = [];
+    }
 
     req.user.comic.push(newComic._id);
     await req.user.save();
