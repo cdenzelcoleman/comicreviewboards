@@ -48,12 +48,13 @@ router.post("/", ensureSignedIn, async (req, res) => {
       ? req.body.image
       : "https://i.imgur.com/OJnlOy8.jpeg";
 
-    const { categories, ...comicData } = req.body;
+    const { categories, rating, ...comicData } = req.body;
     const categoryArray = Array.isArray(categories) ? categories : [categories];
 
     const newComic = await Comic.create({
       ...comicData,
       categories: categoryArray,
+      rating: rating || 0, 
       owner: req.user._id,
     });
 
@@ -67,7 +68,6 @@ router.post("/", ensureSignedIn, async (req, res) => {
     res.redirect("/comics/new");
   }
 });
-
 
 // GET /comics/new (new functionality) PROTECTED - only signed in users can access
 router.get("/new", ensureSignedIn, (req, res) => {
@@ -92,12 +92,13 @@ router.post("/", ensureSignedIn, async (req, res) => {
       ? req.body.image
       : "https://i.imgur.com/OJnlOy8.jpeg";
 
-    const { categories, ...comicData } = req.body;
+    const { categories, rating, ...comicData } = req.body;
     const categoryArray = Array.isArray(categories) ? categories : [categories];
 
     const newComic = await Comic.create({
       ...comicData,
       categories: categoryArray,
+      rating: rating || 0, // Ensure rating is provided, default to 0 if not
       owner: req.user._id,
     });
 

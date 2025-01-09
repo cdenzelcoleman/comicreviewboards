@@ -28,7 +28,12 @@ const comicSchema = new mongoose.Schema({
     enum: ["Trade Paperback", "Graphic Novel", "Comicbook"],
     required: true,
   },
-  rating: { type: Number, min: 1, max: 5, required: true },
+  rating: {
+    type: Number,
+    required: true,
+    min: 0,
+    max: 5
+  },
   image: {
     type: String,
     validate: {
