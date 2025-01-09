@@ -1,10 +1,29 @@
 <div class="flex-container">
   <%- include('../partials/header.ejs') %>
   </div>
-  <div class="container">
-
+  <div class="search-bar">
+    <form action="/comics" method="GET">
+      <input type="text" name="search" placeholder="Search comics..." value="<%= search || '' %>">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  
 <main>
 <h1>All Comics</h1>
+<div class="pagination">
+  <% if (currentPage > 1) { %>
+    <a href="/comics?page=<%= currentPage - 1 %>">Previous</a>
+  <% } %>
+  <% for (let i = 1; i <= totalPages; i++) { %>
+    <a href="/comics?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+  <% } %>
+  <% if (currentPage < totalPages) { %>
+    <a href="/comics?page=<%= currentPage + 1 %>">Next</a>
+  <% } %>
+  <% if (currentPage < totalPages) { %>
+    <a href="/comics?page=<%= currentPage - 1 %>" aria-label="Previous Page">Previous</a>
+  <% } %>
+</div>
 
 <ul>
   <% if (comics.length > 0) { %>
@@ -18,9 +37,6 @@
         
         <div class="comic-content">
           <a href="/comics/<%= comic._id %>" class="comic-title"><%= comic.title %></a>
-          <!-- <p><strong>Categories:</strong> <%= comic.categories?.join(', ') || 'No categories provided.' %></p>
-          <p><strong>Description:</strong> <%= comic.description || 'No description provided.' %></p>
-          <p><strong>Rating:</strong> <%= comic.rating || 'Not rated yet.' %></p> -->
         </div>
 
         <% if (user && comic.owner.equals(user._id)) { %>

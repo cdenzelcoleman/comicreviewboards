@@ -1,4 +1,6 @@
 <%- include('../partials/header.ejs') %>
+
+<div class="container">
 <h1>Edit Comic</h1>
 
 <form action="/comics/<%= comic._id %>?_method=PUT" method="POST">
@@ -32,6 +34,8 @@
 
   <button type="submit">Save Changes</button>
 </form>
+</div>
+
 
 <a href="/comics/<%= comic._id %>">Cancel</a>
 <%- include('../partials/footer.ejs') %>

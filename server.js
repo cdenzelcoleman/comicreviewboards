@@ -6,9 +6,10 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const comicsController = require("./controllers/comics");
 const apiController = require("./controllers/api");
+const Comic = require("./models/comic"); 
+
 
 const app = express();
-// Set the port from environment variable or default to 3000
 const port = process.env.PORT || "3000";
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -17,21 +18,12 @@ mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
-// Configure Express app
-// app.set(...)
 
-// Mount Middleware
-// app.use(...)
-
-// Morgan for logging HTTP requests
+// Middleware
 app.use(morgan("dev"));
-// Static middleware for returning static assets to the browser
 app.use(express.static("public"));
-// Middleware to parse URL-encoded data from forms
 app.use(express.urlencoded({ extended: false }));
-// Middleware for using HTTP verbs such as PUT or DELETE
 app.use(methodOverride("_method"));
-// Session middleware
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -39,31 +31,25 @@ app.use(
     saveUninitialized: true,
   }),
 );
-
-// Add the user (if logged in) to req.user & res.locals
 app.use(require("./middleware/add-user-to-locals-and-req"));
 
 // Routes
-
-// GET /  (home page functionality)
-app.get("/", (req, res) => {
-  res.render("home.ejs", { title: "Home Page" });
+app.get("/", async (req, res) => {
+  try {
+      const randomComics = await Comic.aggregate([{ $sample: { size: 4 } }]);
+    res.render("home.ejs", { comics: randomComics, title: "Home Page" });
+  } catch (err) {
+    console.error(err);
+    res.render("home.ejs", { comics: [], title: "Home Page" }); 
+    }
 });
 
-// '/auth' is the "starts with" path that the request must match
-// The "starts with" path is pre-pended to the paths
-// defined in the router module
 app.use("/auth", require("./controllers/auth"));
-
 app.use("/comics", require("./controllers/comics"));
-
 app.use("/api", apiController);
 
-// Any requests that get this far must have a signed in
-// user thanks to ensureSignedIn middleware
-app.use(require("./middleware/ensure-signed-in"));
-// Any controller/routes mounted below here will have
 // ALL routes protected by the ensureSignedIn middleware
+app.use(require("./middleware/ensure-signed-in"));
 app.use("/comics", comicsController);
 
 app.listen(port, () => {

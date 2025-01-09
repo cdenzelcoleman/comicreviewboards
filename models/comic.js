@@ -1,62 +1,46 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoosePaginate = require("mongoose-paginate-v2");
 
-const commentSchema = new Schema(
-  {
-    text: { type: String, required: true },
-    author: { type: Schema.Types.ObjectId, ref: "User" },
-  },
-  { timestamps: true },
-);
+const commentSchema = new mongoose.Schema({
+  text: { type: String, required: true },
+  author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+}, { timestamps: true });
 
-const comicSchema = new Schema(
-  {
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    categories: [
-      {
-        type: String,
-        enum: [
-          "Fantasy",
-          "Sci-Fi",
-          "Horror",
-          "Adventure",
-          "Drama",
-          "Manga",
-          "Comedy",
-        ],
-        default: "Fantasy",
-      },
-    ],
-    format: {
+const comicSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  categories: [
+    {
       type: String,
-      enum: ["Trade Paperback", "Graphic Novel", "Comicbook", "Comic Book"],
-      required: true,
+      enum: [
+        "Fantasy",
+        "Sci-Fi",
+        "Horror",
+        "Adventure",
+        "Drama",
+        "Manga",
+        "Comedy",
+      ],
     },
-    rating: { type: Number, min: 1, max: 5, required: true, default: 3 },
-    image: {
-      type: String,
-      validate: {
-        validator: (v) => /^https?:\/\/.+\.(jpg|jpeg|png|gif|svg)$/i.test(v),
-        message: "Invalid image URL. Must be a direct link to an image file.",
-      },
-      default: "https://i.imgur.com/OJnlOy8.jpeg",
-    },
-    owner: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-      index: true,
-    },
-    comments: [
-      {
-        text: { type: String, required: true },
-        author: { type: Schema.Types.ObjectId, ref: "User" },
-        createdAt: { type: Date, default: Date.now },
-      },
-    ],
+  ],
+  format: {
+    type: String,
+    enum: ["Trade Paperback", "Graphic Novel", "Comicbook"],
+    required: true,
   },
-  { timestamps: true },
-);
-const Comic = mongoose.model("Comic", comicSchema);
-module.exports = Comic;
+  rating: { type: Number, min: 1, max: 5, required: true },
+  image: {
+    type: String,
+    validate: {
+      validator: (v) => /^https?:\/\/.+\.(jpg|jpeg|png|gif|svg)$/i.test(v),
+      message: "Invalid image URL. Must be a direct link to an image file.",
+    },
+  },
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  comments: [commentSchema],
+}, { timestamps: true });
+
+// Apply the pagination plugin
+comicSchema.plugin(mongoosePaginate);
+
+module.exports = mongoose.model("Comic", comicSchema);

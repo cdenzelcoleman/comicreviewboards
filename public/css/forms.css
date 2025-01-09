@@ -18,6 +18,8 @@ form {
     width: 100%;
     max-width: 600px;
     display: grid;
+    color: var(--color-5);
+ 
     gap: 1rem;
   }
   
@@ -59,7 +61,6 @@ form {
     --border-height: 1px;
     --border-before-color: rgba(221, 221, 221, 0.39);
     --border-after-color: #5891ff;
-    --input-hovered-color: #4985e01f;
     position: relative;
     width: var(--width-of-input);
    }

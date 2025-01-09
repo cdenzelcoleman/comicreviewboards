@@ -42,7 +42,7 @@
 
   .sign-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: center;
     justify-content: center; 
     align-items: center; 
     width: 100%;
