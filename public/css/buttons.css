@@ -7,7 +7,9 @@
   border: none;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
 }
 
 .actions a:hover,
@@ -17,15 +19,13 @@
   transform: scale(1.05);
 }
 
-
-
-/* From Uiverse.io by andrew-demchenk0 */ 
+/* From Uiverse.io by andrew-demchenk0 */
 .button {
-    --main-focus: var(--color-3);
-    --font-color: var(--color-5);
-    --bg-color-sub: var(--color-2);
-    --bg-color: var(--color-1);
-    --main-color: var(--color-7);
+  --main-focus: var(--color-3);
+  --font-color: var(--color-5);
+  --bg-color-sub: var(--color-2);
+  --bg-color: var(--color-1);
+  --main-color: var(--color-7);
 
   position: relative;
   width: 150px;
@@ -41,7 +41,9 @@
   transition: all 0.3s;
 }
 
-.button, .button__icon, .button__text {
+.button,
+.button__icon,
+.button__text {
   transition: all 0.3s;
 }
 
@@ -148,148 +150,157 @@
   transform: translateY(0px);
   transition-duration: 0.3s;
 }
-/* From Uiverse.io by hamoode-taha-04 */ 
+/* From Uiverse.io by hamoode-taha-04 */
 .ui-btn {
-    cursor: pointer;
-    border-radius: 5px;
-    color: var(--color-5);
-    border-style: solid;
-    background-color: transparent;
-    border: 2px solid var(--color-5);
-    width: 120px;
-    height: 40px;
-    transition: 0.2s ease;
-    text-transform: uppercase;
-    border-width: 2px;
-    font-weight: 500;
-    font-size: 18px;
-    letter-spacing: 2px;
-    transition: all 0.3s;
-  }
-  .ui-btn:hover {
-    color: var(--color-1);
-    background-color: var(--color-3);
-    border-color: var(--color-3);
-    text-shadow: 0 0 50px white, 0 0 20px white, 0 0 15px white;
-    box-shadow: 0 0 50px rgb(0, 81, 255), 0 0 30px rgb(0, 81, 255),
-      0 0 60px rgb(0, 81, 255), 0 0 120px rgb(0, 81, 255);
-    font-size: 20px;
-    width: 130px;
-    height: 50px;
-    letter-spacing: 3px;
-    transform: scale(1.05);
-  }
-  .ui-btn:active {
-    width: 115px;
-    height: 38px;
-    letter-spacing: 0px;
-  }
+  cursor: pointer;
+  border-radius: 5px;
+  color: var(--color-5);
+  border-style: solid;
+  background-color: transparent;
+  border: 2px solid var(--color-5);
+  width: 120px;
+  height: 40px;
+  transition: 0.2s ease;
+  text-transform: uppercase;
+  border-width: 2px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+}
+.ui-btn:hover {
+  color: var(--color-1);
+  background-color: var(--color-3);
+  border-color: var(--color-3);
+  text-shadow:
+    0 0 50px white,
+    0 0 20px white,
+    0 0 15px white;
+  box-shadow:
+    0 0 50px rgb(0, 81, 255),
+    0 0 30px rgb(0, 81, 255),
+    0 0 60px rgb(0, 81, 255),
+    0 0 120px rgb(0, 81, 255);
+  font-size: 20px;
+  width: 130px;
+  height: 50px;
+  letter-spacing: 3px;
+  transform: scale(1.05);
+}
+.ui-btn:active {
+  width: 115px;
+  height: 38px;
+  letter-spacing: 0px;
+}
 
-  .comments {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 2em; 
-    margin-bottom: 2em; 
-  }
-  
-  /* From Uiverse.io by andrew-demchenk0 */ 
-  .button {
-    --main-focus: var(--color-3);
-    --font-color: var(--color-5);
-    --bg-color-sub: var(--color-2);
-    --bg-color: var(--color-1);
-    --main-color: var(--color-7);
-    position: relative;
-    width: 150px;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    border: 2px solid var(--main-color);
-    box-shadow: 4px 4px var(--main-color);
-    background-color: var(--bg-color);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  .button, .button__icon, .button__text {
-    transition: all 0.3s;
-  }
-  
-  .button .button__text {
-    transform: translateX(22px);
-    color: var(--font-color);
-    font-weight: 600;
-  }
-  
-  .button .button__icon {
-    position: absolute;
-    transform: translateX(109px);
-    height: 100%;
-    width: 39px;
-    background-color: var(--bg-color-sub);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .button .svg {
-    width: 20px;
-    fill: var(--main-color);
-  }
-  
-  .button:hover {
-    background: var(--bg-color);
-  }
-  
-  .button:hover .button__text {
-    color: transparent;
-  }
-  
-  .button:hover .button__icon {
-    width: 148px;
-    transform: translateX(0);
-  }
-  
-  .button:active {
-    transform: translate(3px, 3px);
-    box-shadow: 0px 0px var(--main-color);
-  }
-  /* From Uiverse.io by Jedi-hongbin */ 
+.comments {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+}
+
+/* From Uiverse.io by andrew-demchenk0 */
+.button {
+  --main-focus: var(--color-3);
+  --font-color: var(--color-5);
+  --bg-color-sub: var(--color-2);
+  --bg-color: var(--color-1);
+  --main-color: var(--color-7);
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.button,
+.button__icon,
+.button__text {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(22px);
+  color: var(--font-color);
+  font-weight: 600;
+}
+
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: var(--bg-color-sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .svg {
+  width: 20px;
+  fill: var(--main-color);
+}
+
+.button:hover {
+  background: var(--bg-color);
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px var(--main-color);
+}
+/* From Uiverse.io by Jedi-hongbin */
 button {
-    display: flex;
-    height: 3em;
-    width: 100px;
-    align-items: center;
-    justify-content: center;
-    background-color: #eeeeee4b;
-    border-radius: 3px;
-    letter-spacing: 1px;
-    transition: all 0.2s linear;
-    cursor: pointer;
-    border: none;
-    background:var(--color-8); /* maybe background-color: var(--color-8);*/
-   }
-   
-   button > svg {
-    margin-right: 5px;
-    margin-left: 5px;
-    font-size: 20px;
-    transition: all 0.4s ease-in;
-   }
-   
-   button:hover > svg {
-    font-size: 1.2em;
-    transform: translateX(-5px);
-   }
-   
-   button:hover {
-    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
-    transform: translateY(-2px);
-   }
-   
-   button:focus {
-    box-shadow: 0 0 15px var(--color-8);
+  display: flex;
+  height: 3em;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee4b;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: none;
+  background: var(--color-8);
+}
+
+button > svg {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  transition: all 0.4s ease-in;
+}
+
+button:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+}
+
+button:hover {
+  box-shadow:
+    9px 9px 33px #d1d1d1,
+    -9px -9px 33px #ffffff;
   transform: translateY(-2px);
-  }
-  
+}
+
+button:focus {
+  box-shadow: 0 0 15px var(--color-8);
+  transform: translateY(-2px);
+}

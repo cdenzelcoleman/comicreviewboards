@@ -1,99 +1,101 @@
 :root {
-    --color-1: #fb9775;
-    --color-2: #302344;
-    --color-3: #62a0de;
-    --color-4: #b63e65;
-    --color-5: #cdd9f1;
-    --color-6: #eec9a0;
-    --color-7: #5a243b;
-    --color-8: #8d5f90;
-    --input-border-color: rgba(221, 221, 221, 0.39);
-    --input-focus-color: var(--color-3);
-    --button-bg-color: #444;
-    --button-hover-bg-color: #f1c40f;
-    --button-hover-text-color: #444;
-  }
+  --color-1: #fb9775;
+  --color-2: #302344;
+  --color-3: #62a0de;
+  --color-4: #b63e65;
+  --color-5: #cdd9f1;
+  --color-6: #eec9a0;
+  --color-7: #5a243b;
+  --color-8: #8d5f90;
+  --input-border-color: rgba(221, 221, 221, 0.39);
+  --input-focus-color: var(--color-3);
+  --button-bg-color: #444;
+  --button-hover-bg-color: #f1c40f;
+  --button-hover-text-color: #444;
+}
 
 form {
-    width: 100%;
-    max-width: 600px;
-    display: grid;
-    color: var(--color-5);
- 
-    gap: 1rem;
-  }
-  
-  form label {
-    font-weight: bold;
-  }
-  
-  form input,
-  form textarea,
-  form select,
-  form button {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--input-border-color);
-    border-radius: 4px;
-  }
-  
-  form button {
-    background-color: var(--button-bg-color);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  form button:hover {
-    background-color: var(--button-hover-bg-color);
-    color: var(--button-hover-text-color);
-    transform: scale(1.05);
-  }
-  
-  form button:focus {
-    outline: 2px solid var(--button-hover-bg-color);
-    outline-offset: 2px;
-  }
-  /* From Uiverse.io by satyamchaudharydev */ 
+  width: 100%;
+  max-width: 600px;
+  display: grid;
+  color: var(--color-5);
+
+  gap: 1rem;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input,
+form textarea,
+form select,
+form button {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+}
+
+form button {
+  background-color: var(--button-bg-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+}
+
+form button:hover {
+  background-color: var(--button-hover-bg-color);
+  color: var(--button-hover-text-color);
+  transform: scale(1.05);
+}
+
+form button:focus {
+  outline: 2px solid var(--button-hover-bg-color);
+  outline-offset: 2px;
+}
+/* From Uiverse.io by satyamchaudharydev */
 .form {
-    --width-of-input: 200px;
-    --border-height: 1px;
-    --border-before-color: rgba(221, 221, 221, 0.39);
-    --border-after-color: #5891ff;
-    position: relative;
-    width: var(--width-of-input);
-   }
-   /* styling of Input */
-   .input {
-    color: #444;
-    font-size: 0.9rem;
-    background-color: transparent;
-    width: 100%;
-    box-sizing: border-box;
-    padding-inline: 0.5em;
-    padding-block: 0.7em;
-    border: none;
-    border-bottom: var(--border-height) solid var(--border-before-color);
-   }
-   /* styling of animated border */
-   .input-border {
-    position: absolute;
-    background: var(--border-after-color);
-    width: 0%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    transition: 0.3s;
-   }
-   /* Hover on Input */
-   input:hover {
-    background: none;
-   }
-   
-   input:focus {
-    outline: none;
-   }
-   input:valid ~ .input-border{
-     width: 100%;
-   }
+  --width-of-input: 200px;
+  --border-height: 1px;
+  --border-before-color: rgba(221, 221, 221, 0.39);
+  --border-after-color: #5891ff;
+  position: relative;
+  width: var(--width-of-input);
+}
+
+.input {
+  color: #444;
+  font-size: 0.9rem;
+  background-color: transparent;
+  width: 100%;
+  box-sizing: border-box;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+  border-bottom: var(--border-height) solid var(--border-before-color);
+}
+
+.input-border {
+  position: absolute;
+  background: var(--border-after-color);
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s;
+}
+
+input:hover {
+  background: none;
+}
+
+input:focus {
+  outline: none;
+}
+input:valid ~ .input-border {
+  width: 100%;
+}

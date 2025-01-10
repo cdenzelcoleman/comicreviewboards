@@ -7,7 +7,7 @@ Welcome to **Comic Review Boards**! Comic Review Board is a web app where users 
 - **Database:** MongoDB
 - **Frontend:** EJS, CSS
 - **API Intergration:** Comic Vine API
-- **Others:** Axios, dotenv, method-override, express-session
+- **Others:** Axios, dotenv, method-override, express-session, mongoose-paginate-v2
 
 ## Features
 - **User Authentication:** Secure user sign-up and login using sessions.
@@ -24,7 +24,7 @@ Welcome to **Comic Review Boards**! Comic Review Board is a web app where users 
 
 ## Installation
 To get started with the project, simply go to provided URL
-[Click Here!](https:link)
+[Click Here!](https://comicreviewboards-1b3201cae838.herokuapp.com/)
 
 ##Usage
 
@@ -58,8 +58,8 @@ Acknowledgements
 **Have fun!** 
 
 
-![Comicbook Vine API](https://i.imgur.com/RTSCrXJ.png)
-![Comicbook Vine API](https://i.imgur.com/RTSCrXJ.png)
-![Comicbook Vine API](https://i.imgur.com/RTSCrXJ.png)
-![Comicbook Vine API](https://i.imgur.com/RTSCrXJ.png)
+![Comic Review Boards](https://i.imgur.com/bVMYcVE.png)
+![Comic Review Boards](https://i.imgur.com/CqgPwkf.png)
+![Comic Review Boards](https://i.imgur.com/axO1Y2j.png)
+![Comic Review Boards](https://i.imgur.com/NHhOs5l.png)
 

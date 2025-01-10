@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
 
-//Sign Up
 router.get("/sign-up", (req, res) => {
   res.render("auth/sign-up.ejs", { title: "Sign Up!" });
 });
@@ -22,7 +21,6 @@ router.post("/sign-up", async (req, res) => {
   }
 });
 
-// sign in
 router.get("/sign-in", (req, res) => {
   res.render("auth/sign-in.ejs", { title: "Sign In" });
 });
@@ -41,7 +39,6 @@ router.post("/sign-in", async (req, res) => {
   }
 });
 
-//sign-out
 router.get("/sign-out", (req, res) => {
   req.session.destroy();
   res.redirect("/");

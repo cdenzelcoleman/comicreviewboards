@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
 <div class="container">
-  
-  <main>
+
+ <div class="show-comic">
     <div class="comic-item">
       <img src="<%= comic.image %>" alt="<%= comic.title %>" class="comic-image">
       <div class="comic-content">
@@ -34,7 +34,6 @@
       <% } %>
     </div>
 
-    <!-- Comments Section -->
     <div class="comments">
       <h2>Comments</h2>
       <ul>
@@ -57,8 +56,8 @@
         <p><a href="/auth/sign-in" style="color: #5891ff; text-decoration: none;">Sign in</a> to post a comment.</p>
       <% } %>
     </div>
-  </main>
-
+</div>
+ 
     <%- include('../partials/footer.ejs') %>
   
 </div>

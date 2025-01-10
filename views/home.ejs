@@ -1,33 +1,35 @@
 <%- include('./partials/header.ejs') %>
 
-    <main>
-        <div class="loading">Loading comics...</div>
-        <style>
-          .loading {
-            font-size: 1.5rem;
-            text-align: center;
-            margin-top: 2rem;
-            color: var(--color-2);
-          }
-        </style>
-        <section class="random-comics">
-            <h2>Featured Comics</h2>
-            <ul class="random-comics-list">
-                <% if (comics.length > 0) { %>
-                    <% comics.forEach((comic) => { %>
-                        <li class="comic-item">
-                            <div class="parent-container">
-                                <img class="comic-image" src="<%= comic.image %>" alt="<%= comic.title %>">
-                            </div>
-                            <h3><%= comic.title %></h3>
-                            <p><%= comic.description %></p>
-                        </li>
-                    <% }); %>
-                <% } else { %>
-                    <li>No comics available.</li>
-                <% } %>
-            </ul>
-        </section>
-    </main>
+<main>
+    <div class="loading">Loading comics...</div>
+    <style>
+      .loading {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-top: 2rem;
+        color: var(--color-2);
+      }
+    </style>
+    <section class="random-comics">
+      <h2>Featured Comics</h2>
+      <ul class="random-comics-list">
+        <% if (comics.length > 0) { %>
+          <% comics.forEach((comic) => { %>
+            <li class="comic-item">
+              <div class="parent-container">
+                <a href="/comics/<%= comic._id %>">
+                <img class="comic-image" src="<%= comic.image %>" alt="<%= comic.title %>">
+                </a>
+              </div>
+              <h3><%= comic.title %></h3>
+              <p><%= comic.description %></p>
+            </li>
+          <% }); %>
+        <% } else { %>
+          <li>No comics available.</li>
+        <% } %>
+      </ul>
+    </section>
+  </main>
 
 <%- include('./partials/footer.ejs') %>

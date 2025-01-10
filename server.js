@@ -6,20 +6,16 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const comicsController = require("./controllers/comics");
 const apiController = require("./controllers/api");
-const Comic = require("./models/comic"); 
-
+const Comic = require("./models/comic");
 
 const app = express();
 const port = process.env.PORT || "3000";
 
 mongoose.connect(process.env.MONGODB_URI);
-
 mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
-
-// Middleware
 app.use(morgan("dev"));
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
@@ -33,22 +29,20 @@ app.use(
 );
 app.use(require("./middleware/add-user-to-locals-and-req"));
 
-// Routes
 app.get("/", async (req, res) => {
   try {
-      const randomComics = await Comic.aggregate([{ $sample: { size: 4 } }]);
+    const randomComics = await Comic.aggregate([{ $sample: { size: 4 } }]);
     res.render("home.ejs", { comics: randomComics, title: "Home Page" });
   } catch (err) {
-    console.error(err);
-    res.render("home.ejs", { comics: [], title: "Home Page" }); 
-    }
+    console.error("Error rendering home page:", err.message);
+    res.render("home.ejs", { comics: [], title: "Home Page" });
+  }
 });
 
 app.use("/auth", require("./controllers/auth"));
 app.use("/comics", require("./controllers/comics"));
-app.use("/api", apiController);
+app.use("/api", apiController); // Dynamic API handling
 
-// ALL routes protected by the ensureSignedIn middleware
 app.use(require("./middleware/ensure-signed-in"));
 app.use("/comics", comicsController);
 
