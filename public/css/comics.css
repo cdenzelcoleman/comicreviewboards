@@ -20,8 +20,8 @@ ul {
 }
 
 .comic-item {
+  background: rgba(255, 255, 255, 0.633);
   padding: 1rem;
-  background-color: transparent;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: calc(25% - 1rem);
@@ -49,7 +49,7 @@ ul {
 .comic-content {
   margin-top: 1rem;
   text-align: center;
-  background-color: var(--color-6);
+  
 }
 
 .search-bar {

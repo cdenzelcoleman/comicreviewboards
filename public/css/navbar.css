@@ -29,7 +29,6 @@ nav span {
   font-weight: 600;
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
