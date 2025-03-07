@@ -70,7 +70,7 @@ form button:focus {
 .input {
   color: #444;
   font-size: 0.9rem;
-  background-color: transparent;
+  background-color: #fff;
   width: 100%;
   box-sizing: border-box;
   padding-inline: 0.5em;

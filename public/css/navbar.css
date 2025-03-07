@@ -52,14 +52,20 @@ nav span {
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
-    padding: 1rem;
-    text-align: center;
+    align-items: center;
+  }
+
+  nav div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   nav a {
-    margin: 0.5rem 0;
+    margin: 5px 0;
   }
 }
+
 
 .flex-container {
   display: flex;

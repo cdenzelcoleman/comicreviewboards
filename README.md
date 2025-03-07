@@ -1,4 +1,4 @@
-# ![Comic Review Boards](https://i.imgur.com/LvIGBo7.png)
+ ![Comic Review Boards](https://i.imgur.com/LvIGBo7.png)
 
 Welcome to **Comic Review Boards**! Comic Review Board is a web app where users can browse, review, and manage a collection of comics. It leverages the Comic Vine API to seed an initial database of comics and provides features for registered users to add, edit, or delete their comic entries. Users can also comment on comics and view aggregated ratings.
 

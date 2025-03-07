@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const comicsController = require("./controllers/comics");
 const apiController = require("./controllers/api");
+const sitemapRouter = require("./sitemap");
 const Comic = require("./models/comic");
 
 const app = express();
@@ -42,6 +43,8 @@ app.get("/", async (req, res) => {
 app.use("/auth", require("./controllers/auth"));
 app.use("/comics", require("./controllers/comics"));
 app.use("/api", apiController); // Dynamic API handling
+app.use("/", sitemapRouter);
+
 
 app.use(require("./middleware/ensure-signed-in"));
 app.use("/comics", comicsController);
