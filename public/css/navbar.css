@@ -4,18 +4,24 @@
 }
 
 nav {
-  background-color: var(--nav-bg);
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; 
+  background-color: var(--nav-bg); 
   color: var(--nav-text);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 nav a {
+  color: var(--nav-text);
   margin: 0 0.5rem;
   font-weight: 500;
   transition: color 0.3s ease;
