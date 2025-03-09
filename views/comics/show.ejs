@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
-<div class="container">
 
- <div class="show-comic">
+<div class="container">
+  <div class="show-comic">
     <div class="comic-item">
       <img src="<%= comic.image %>" alt="<%= comic.title %>" class="comic-image">
       <div class="comic-content">
@@ -13,27 +13,17 @@
         <p><strong>Rating:</strong> <%= comic.rating %>/5</p>
         <p><strong>Posted by:</strong> <%= comic.owner.username %></p>
       </div>
-      <a href="/comics" class="back-button">
-        <button>
-          <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
-            <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
-          </svg>
-          <span>Comics</span>
-        </button>
-      </a>
-
+      
       <% if (user && user._id.equals(comic.owner._id)) { %>
         <div class="action-buttons">
-          <%- include('../partials/editButton', { href: `/comics/${comic._id}/edit` }) %>
+          <%- include('../partials/editButton', { href: `/comics/${comic._id}/edit`, btnClass: 'btn' }) %>
           <form action="/comics/<%= comic._id %>?_method=DELETE" method="POST" style="display:inline;">
-            <button type="submit" class="button">
-              <span class="button__text">Delete</span>
-            </button>
+            <button type="submit" class="btn">Delete</button>
           </form>
         </div>
       <% } %>
     </div>
-
+    
     <div class="comments">
       <h2>Comments</h2>
       <ul>
@@ -43,30 +33,36 @@
           </li>
         <% }); %>
       </ul>
-
+          
       <% if (user) { %>
         <form action="/comics/<%= comic._id %>/comments" method="POST">
           <div class="form">
             <input class="input" placeholder="Write your comment..." name="text" required type="text">
             <span class="input-border"></span>
           </div>
-          <button class="ui-btn">Opinions</button>
+          <button class="btn">Opinions</button>
         </form>
       <% } else { %>
         <p><a href="/auth/sign-in" style="color: #5891ff; text-decoration: none;">Sign in</a> to post a comment.</p>
       <% } %>
     </div>
+    
     <div class="share-buttons">
-      <a href="https://twitter.com/intent/tweet?text=Check out this comic: <%= comic.title %>&url=https://comicreviewboards-1b3201cae838.herokuapp.com/comics/<%= comic._id %>" target="_blank">
-        X
+      <a href="https://twitter.com/intent/tweet?text=Check out this comic: <%= comic.title %>&url=https://comicreviewboards-1b3201cae838.herokuapp.com/comics/<%= comic._id %>" target="_blank" class="btn">
+        Tweet
       </a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://comicreviewboards-1b3201cae838.herokuapp.com/comics/<%= comic._id %>" target="_blank">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://comicreviewboards-1b3201cae838.herokuapp.com/comics/<%= comic._id %>" target="_blank" class="btn">
         Facebook
       </a>
     </div>
+    
+    <a href="/comics" class="btn back-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="16" width="16">
+        <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
+      </svg>
+      <span>Comics</span>
+    </a>
 
-</div>
- 
-    <%- include('../partials/footer.ejs') %>
-  
-</div>
+  </div>
+
+<%- include('../partials/footer.ejs') %>
