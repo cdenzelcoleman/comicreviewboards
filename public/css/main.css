@@ -56,3 +56,51 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-bottom: 1rem;
 }
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .container {
+    width: 95%;
+    padding: 0.5rem;
+  }
+  
+  nav {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  nav div {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav a {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  
+  ul {
+    gap: 0.5rem;
+  }
+  
+  .comic-item {
+    flex: 1 1 calc(100% - 1rem);
+    max-width: calc(100% - 1rem);
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  form input,
+  form textarea,
+  form select {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
